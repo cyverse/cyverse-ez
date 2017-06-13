@@ -13,7 +13,7 @@
 
     - file: 
         src: /opt/cyverse-ez/roles/ez_setup
-        dest: /etc/ansible/roles/
+        dest: /etc/ansible/roles/ez_setup
         state: link
       
   roles:
