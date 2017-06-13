@@ -12,9 +12,9 @@
         mode: 0755
 
     - file: 
-      src: /opt/cyverse-ez/roles/ez_setup
-      dest: /etc/ansible/roles/
-      state: link
+        src: /opt/cyverse-ez/roles/ez_setup
+        dest: /etc/ansible/roles/
+        state: link
       
   roles:
 
