@@ -6,15 +6,14 @@
 
   pre_tasks:
 
-    - name: if the roles directory doesn't exist, we'll need to create it
-      file:
+    - file:
         path: /etc/ansible/roles
         state: directory
         mode: 0755
 
-    - name: link the ez_setup role
+    - file: 
       src: /opt/cyverse-ez/roles/ez_setup
-      dest /etc/ansible/roles/
+      dest: /etc/ansible/roles/
       state: link
       
   roles:
