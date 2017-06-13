@@ -1,0 +1,22 @@
+# This playbook assumes that cyverse-ez directory is located in /opt/cyverse-ez/
+
+- name: this playbook will setup ez locally
+  hosts: 127.0.0.1
+  connection: local
+
+  pre_tasks:
+
+    - name: if the roles directory doesn't exist, we'll need to create it
+      file:
+        path: /etc/ansible/roles
+        state: directory
+        mode: 0755
+
+    - name: link the ez_setup role
+      src: /opt/cyverse-ez/roles/ez_setup
+      dest /etc/ansible/roles/
+      state: link
+      
+  roles:
+
+    - ez_setup
