@@ -4,6 +4,11 @@
   hosts: 127.0.0.1
   connection: local
 
-  tasks:
+  pre_tasks:
     - name: pull in any Ansible Galaxy roles from the requirements.yml
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
+
+  roles:
+    - ez
+
+
