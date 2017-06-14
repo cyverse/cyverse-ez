@@ -10,6 +10,5 @@ This repo contains the ansible for CyVerse's ez command line facility. To use, f
 Other notes:
 * Ansible v2.0+ is supported
 * Requires access to Ansible Galaxy and the ansible-galaxy command
-* Modifications to the ez_setup role found in this repo should only be for system profile changes only 
 * All other roles (e.g. software installation) should be added through Ansible Galaxy or a git repo, external to this repo
 * The variable CYVERSE_INSTALL_ROOT, if defined, will change the install directory for software. Defaults to /opt
