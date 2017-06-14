@@ -184,25 +184,3 @@ ezj () {
 		jupyter_notebook_launch
 	fi
 }
-
-alias ez="echo '
-Here are the different ez commands:
-
-ez   -> this help menu
-ezj  -> run jupyter-notebook with python detection
-
-Options to pass to 'ezj':
--q	do not attempt to install, just launch jupyter!
--R	install the R kernel (-r also works)
--2	force python 2 kernel (not compatible with -3 option)
--3	force python 3 kernel (not compatible with -2 option)
--u	force update of anaconda (default is no update)
--p	takes a directory as an option; install in a different location other than default ($INSTALL_ROOT)
-	NOTE: if you set this, you must pass it again for future calls
-
-Example of options
-
-	ezj -u -R
-	ezj -p /opt -u
-
-'"

@@ -7,6 +7,12 @@
     dest=/etc/profile.d/cyverse10-utils.sh
     mode=0755
 
+- name: copy profile-cyverse15-ez-setup.sh.j2 to /etc/profile.d
+  template:
+    src=profile-cyverse15-ez-setup.sh.j2
+    dest=/etc/profile.d/cyverse15-ez-setup.sh
+    mode=0755
+
 - name: copy profile-cyverse20-ezj-setup.sh.j2 to /etc/profile.d
   template:
     src=profile-cyverse20-ezj-setup.sh.j2
