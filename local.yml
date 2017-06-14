@@ -5,13 +5,12 @@
   connection: local
 
   tasks:
+    - name: remove the ez role if update is forced
+      command: ansible-galaxy remove ez
+      when: ez_force_update is defined
+
     - name: pull in any Ansible Galaxy roles from the requirements.yml, do not force
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
-      when: ez_force_update is undefined
-
-    - name: pull in any Ansible Galaxy roles from the requirements.yml, force update
-      command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml -f
-      when: ez_force_update is defined
 
     - name: including cyverse ez role
       static: no
