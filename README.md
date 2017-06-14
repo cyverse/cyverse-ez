@@ -3,7 +3,7 @@
 This repo contains the ansible for CyVerse's ez command line facility. To use, follow these steps:
 
 1. install ansible on the system (e.g. apt-get, yum, from source)
-2. use ansible-pull: ansible-pull -v -U https://github.com/edwins/cyverse-ez.git -d /opt/cyverse-ez -i locahost -o 
+2. use ansible-pull: ansible-pull -v -U https://github.com/cyverse-org/cyverse-ez.git -d /opt/cyverse-ez -i locahost -o 
 3. logout and login to your system (to re-read the system-level profile environment)
 4. type "ez" for the help
 
