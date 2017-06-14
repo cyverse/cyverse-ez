@@ -28,7 +28,7 @@ Example of options
 "
 	else
 		echo "updating ez cli"
-		ansible-pull -v -U https://github.com/cyverse-org/cyverse-ez.git -d /opt/cyverse-ez -i locahost -o > /var/log/cyverse-ez.log 2>&1
+		ansible-pull -v -U https://github.com/cyverse/cyverse-ez.git -d /opt/cyverse-ez -i locahost -o > /var/log/cyverse-ez.log 2>&1
 		if [ $? -eq 0 ]; then
 			echo "success in updating!"
 			for i in /etc/profile.d/cyverse*; do
