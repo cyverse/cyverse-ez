@@ -1,2 +1,1 @@
-- name: geerlingguy.git from Ansible Galaxy
-  src: geerlingguy.git
+- src: geerlingguy.git
