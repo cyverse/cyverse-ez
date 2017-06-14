@@ -5,8 +5,13 @@
   connection: local
 
   tasks:
-    - name: pull in any Ansible Galaxy roles from the requirements.yml
+    - name: pull in any Ansible Galaxy roles from the requirements.yml, do not force
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
+      when: ez_force_update is undefined
+
+    - name: pull in any Ansible Galaxy roles from the requirements.yml, force update
+      command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml -f
+      when: ez_force_update is defined
 
     - name: including the git role
       static: no
