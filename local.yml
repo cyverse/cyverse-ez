@@ -13,11 +13,6 @@
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml -f
       when: ez_force_update is defined
 
-    - name: including the git role
-      static: no
-      include_role:
-        name: git
-
     - name: including cyverse ez role
       static: no
       include_role:
