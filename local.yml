@@ -19,7 +19,7 @@
         state: link
 
     - name: pull in any Ansible Galaxy roles from the requirements.yml
-        command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
+      command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
       
   roles:
 
