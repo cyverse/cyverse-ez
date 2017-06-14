@@ -1,14 +1,11 @@
 #!/bin/bash 
 
-# NOTE: if you change this, you must change it below as well
-INSTALL_ROOT={{EZ_INSTALL_DIR|default("/opt")}}
-
 #############################
 # begin sudo anaconda_install
 #############################
 export sudo_anaconda_install='
 ANACONDA_VERSION=4.3.1
-INSTALL_ROOT={{EZ_INSTALL_DIR|default("/opt")}}
+CYVERSE_INSTALL_ROOT={{EZ_INSTALL_DIR|default("/opt")}}
 python_detect () {
 	if [ -n "$pversion" -a $pversion -ne 0 ]; then
 		PYTHON_VERSION=$pversion
@@ -30,16 +27,16 @@ anaconda_update () {
 
 anaconda_install () {
 
-	# set the INSTALL_ROOT if found
+	# set the CYVERSE_INSTALL_ROOT if found
 	if [ -n "$install_root" ]; then
-		INSTALL_ROOT=$install_root
+		CYVERSE_INSTALL_ROOT=$install_root
 	fi
 
-	ANACONDA_ROOT=${INSTALL_ROOT}/anaconda${PYTHON_VERSION}
+	ANACONDA_ROOT=${CYVERSE_INSTALL_ROOT}/anaconda${PYTHON_VERSION}
 	lastdir=$PWD
 	echo "DEBUG: downloading anaconda binary, may take a few minutes"
-	cd ${INSTALL_ROOT}
-	if [ ! -f ${INSTALL_ROOT}/Anaconda${PYTHON_VERSION}-${ANACONDA_VERSION}-Linux-x86_64.sh ]; then
+	cd ${CYVERSE_INSTALL_ROOT}
+	if [ ! -f ${CYVERSE_INSTALL_ROOT}/Anaconda${PYTHON_VERSION}-${ANACONDA_VERSION}-Linux-x86_64.sh ]; then
 		wget --quiet https://repo.continuum.io/archive/Anaconda${PYTHON_VERSION}-${ANACONDA_VERSION}-Linux-x86_64.sh
 		if [ $? -ne 0 ]; then
 			echo "ERROR: Could not download https://repo.continuum.io/archive/Anaconda${PYTHON_VERSION}-${ANACONDA_VERSION}-Linux-x86_64.sh"
@@ -101,7 +98,7 @@ python_detect () {
 
 anaconda_setpath () {
 	python_detect $1
-	ANACONDA_ROOT=${INSTALL_ROOT}/anaconda${PYTHON_VERSION}
+	ANACONDA_ROOT=${CYVERSE_INSTALL_ROOT}/anaconda${PYTHON_VERSION}
 	if [ -n "$ANACONDA_ROOT" ]; then
 		export PATH="${ANACONDA_ROOT}/bin:${PATH}"
 		export ANACONDA_IS_SET=1
@@ -145,10 +142,10 @@ ezj () {
 			;;
 		p)
 			if [ -n "$OPTARG" -a -d "$OPTARG" ]; then
-				echo "DEBUG: changing INSTALL_ROOT to $OPTARG" 
-				INSTALL_ROOT=$OPTARG
+				echo "DEBUG: changing CYVERSE_INSTALL_ROOT to $OPTARG" 
+				CYVERSE_INSTALL_ROOT=$OPTARG
 			else
-				echo "ERROR: invalid INSTALL_ROOT = $OPTARG"
+				echo "ERROR: invalid CYVERSE_INSTALL_ROOT = $OPTARG"
 				option_error=1
 			fi
 			;;
@@ -178,7 +175,7 @@ ezj () {
 
 	if [ $option_error -eq 0 ]; then
 		if [ $quick -eq 0 ]; then
-			sudo bash -c "eval export update_enabled=${update_option};export rkernel=${r_option};export pversion=${pv};install_root=${INSTALL_ROOT};$sudo_anaconda_install"
+			sudo bash -c "eval export update_enabled=${update_option};export rkernel=${r_option};export pversion=${pv};install_root=${CYVERSE_INSTALL_ROOT};$sudo_anaconda_install"
 		fi
 		anaconda_setpath $pv
 		jupyter_notebook_launch

@@ -1,3 +1,6 @@
+# you may need to define this in other profile scripts
+CYVERSE_INSTALL_ROOT={{EZ_INSTALL_DIR|default("/opt")}}
+
 ez () {
 
 	if [ $# -ne 1 -o "$1" != "update" ]; then
@@ -14,7 +17,7 @@ Options to pass to 'ezj':
 -2      force python 2 kernel (not compatible with -3 option)
 -3      force python 3 kernel (not compatible with -2 option)
 -u      force update of anaconda (default is no update)
--p      takes a directory as an option; install in a different location other than default ($INSTALL_ROOT)
+-p      takes a directory as an option; install in a different location other than default ($CYVERSE_INSTALL_ROOT)
         NOTE: if you set this, you must pass it again for future calls
 
 Example of options
