@@ -5,6 +5,15 @@
   connection: local
 
   tasks:
+    - name: include variables found in /etc/cyverse/ez.yml, if it exists; if error, just ignore
+      include_vars:
+        file: /etc/cyverse/ez.yml
+      ignore_errors: yes
+
+    - name: remove the ez role if update is forced
+      command: ansible-galaxy remove ez
+      when: ez_force_update is defined
+
     - name: pull in any Ansible Galaxy roles from the requirements.yml
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
 
