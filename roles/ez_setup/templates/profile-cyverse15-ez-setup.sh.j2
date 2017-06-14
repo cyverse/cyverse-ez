@@ -2,7 +2,7 @@ ez () {
 
 	if [ $# -ne 1 -o "$1" != "update" ]; then
 
-echo "
+		echo "
 Here are the different ez commands:
 
 ez   -> this help menu
@@ -26,10 +26,14 @@ Example of options
 	else
 		echo "updating ez cli"
 		ansible-pull -v -U https://github.com/edwins/cyverse-ez.git -d /opt/cyverse-ez -i locahost -o > /var/log/cyverse-ez.log 2>&1
-		echo "... done updating"
+		if [ $? -eq 0 ]; then
+			echo "success in updating!"
+			for i in /etc/profile.d/cyverse*; do
+				source $i
+			done
+		else
+			echo "Warning: there may have been an issue updating, but you can probably still use ez cli"
+		fi
 
-		for i in /etc/profile.d/cyverse*; do
-			source $i
-		done
 	fi
 }
