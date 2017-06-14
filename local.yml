@@ -6,15 +6,20 @@
 
   pre_tasks:
 
-    - file:
+    - name: create the roles directory, if it doesn't already exist
+      file:
         path: /etc/ansible/roles
         state: directory
         mode: 0755
 
-    - file: 
+    - name: link the ez_setup role
+      file: 
         src: /opt/cyverse-ez/roles/ez_setup
         dest: /etc/ansible/roles/ez_setup
         state: link
+
+    - name: pull in any Ansible Galaxy roles from the requirements.yml
+        command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
       
   roles:
 
