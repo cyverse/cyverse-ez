@@ -9,5 +9,5 @@
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
 
   roles:
-    - git
-    - ez
+    - geerlingguy.git
+    - CyVerse-Ansible.ez
