@@ -8,10 +8,12 @@
     - name: pull in any Ansible Galaxy roles from the requirements.yml
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
 
-    - include_role:
-      name: geerlingguy.git
+    - name: including the git role
       static: no
+      include_role:
+        name: geerlingguy.git
 
-    - include_role:
-      name: CyVerse-Ansible.ez
+    - name: including cyverse ez role
       static: no
+      include_role:
+        name: CyVerse-Ansible.ez
