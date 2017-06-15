@@ -21,7 +21,7 @@
       file:
        path: /var/log/cyverse-ez.log 
        state: touch
-       mode: 777
+       mode: 0777
 
     - name: including cyverse ez role
       static: no
