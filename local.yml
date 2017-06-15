@@ -17,12 +17,6 @@
     - name: pull in any Ansible Galaxy roles from the requirements.yml
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
 
-    - name: logfile for ansible-pulls, let's touch it and set the right permissions
-      file:
-       path: /var/log/cyverse-ez.log 
-       state: touch
-       mode: 0777
-
     - name: including cyverse ez role
       static: no
       include_role:
