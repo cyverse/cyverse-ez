@@ -10,8 +10,13 @@
       command: ansible-galaxy remove ez
       when: ez_force_update is defined
 
-    - name: pull in any Ansible Galaxy roles from the requirements.yml
+    - name: pull in any Ansible Galaxy roles from the requirements.yml, with force
+      command: ansible-galaxy install -f -r /opt/cyverse-ez/requirements.yml
+      when: ez_force_update is defined
+
+    - name: pull in any Ansible Galaxy roles from the requirements.yml without force
       command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
+      when: ez_force_update is undefined
 
     - name: including cyverse ez role
       static: no
