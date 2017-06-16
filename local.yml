@@ -5,10 +5,6 @@
   connection: local
 
   tasks:
-    - name: include variables found in /etc/cyverse/ez.yml, if it exists; if error, just ignore
-      include_vars:
-        file: /etc/cyverse/ez.yml
-      ignore_errors: yes
 
     - name: remove the ez role if update is forced
       command: ansible-galaxy remove ez
