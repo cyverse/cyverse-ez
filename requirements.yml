@@ -1,2 +1,3 @@
 - src: CyVerse-Ansible.ez
   name: ez
+  version: python-cyverse-ez
