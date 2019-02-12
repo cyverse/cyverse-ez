@@ -1,4 +1,5 @@
 # This playbook assumes that cyverse-ez directory is located in /opt/cyverse-ez/
+# EJS NOTE 2/12/2019 - ansible-galaxy fails ssl cert verify for galaxy.ansible.com/api. Can revert when fixed later
 
 - name: this playbook will setup ez locally
   hosts: 127.0.0.1
@@ -11,11 +12,11 @@
       when: ez_force_update is defined
 
     - name: pull in any Ansible Galaxy roles from the requirements.yml, with force
-      command: ansible-galaxy install -f -r /opt/cyverse-ez/requirements.yml
+      command: ansible-galaxy install -c -f -r /opt/cyverse-ez/requirements.yml
       when: ez_force_update is defined
 
     - name: pull in any Ansible Galaxy roles from the requirements.yml without force
-      command: ansible-galaxy install -r /opt/cyverse-ez/requirements.yml
+      command: ansible-galaxy install -c -r /opt/cyverse-ez/requirements.yml
       when: ez_force_update is undefined
 
     - name: including cyverse ez role
