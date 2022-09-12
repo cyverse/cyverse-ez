@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS READONLY AND NO LONGER ACTIVE
+
 # cyverse-ez
 
 This repo contains the ansible for CyVerse's ez command line facility. To use, follow these steps:
